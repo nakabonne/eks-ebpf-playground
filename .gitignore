@@ -35,3 +35,30 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Kubernetes config (if stored locally)
+kubeconfig
+kubeconfig_*
+
+# AWS credentials (should never be committed)
+.aws/
+credentials

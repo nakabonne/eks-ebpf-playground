@@ -1,13 +1,3 @@
-terraform {
-  required_version = ">= 1.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 provider "aws" {
   region = var.region
 }
@@ -86,10 +76,6 @@ module "eks" {
       tags = var.tags
     }
   }
-
-  # Cluster access entry
-  # To add the current caller identity as an administrator
-  enable_cluster_creator_admin_permissions = true
 
   tags = var.tags
 }

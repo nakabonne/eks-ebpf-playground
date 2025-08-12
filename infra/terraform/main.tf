@@ -2,6 +2,20 @@ provider "aws" {
   region = var.region
 }
 
+locals {
+  # Split version (e.g. 1.33 or 1.32.1) and extract minor component for comparison
+  version_parts     = split(".", var.kubernetes_version)
+  minor_version_num = tonumber(element(local.version_parts, 1))
+
+  # Determine default AMI type based on Kubernetes minor version.
+  # AL2 images are supported only up to 1.32; for 1.33+ we must use AL2023.
+  # Valid AL2023 enumeration requires the _STANDARD suffix.
+  default_ami_type = local.minor_version_num >= 33 ? "AL2023_x86_64_STANDARD" : "AL2_x86_64"
+
+  # Allow manual override via var.ami_type; otherwise use computed default.
+  resolved_ami_type = var.ami_type != "" ? var.ami_type : local.default_ami_type
+}
+
 # Data sources
 data "aws_availability_zones" "available" {
   state = "available"
@@ -62,8 +76,8 @@ module "eks" {
       min_size     = var.node_group_min_size
       max_size     = var.node_group_max_size
       desired_size = var.node_group_desired_size
-
-      ami_type = "AL2_x86_64"
+      # Automatically pick suitable AMI unless overridden.
+      ami_type     = local.resolved_ami_type
 
       # Enable IMDSv2
       metadata_options = {

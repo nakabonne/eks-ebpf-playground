@@ -16,6 +16,12 @@ variable "kubernetes_version" {
   default     = "1.33"
 }
 
+variable "ami_type" {
+  description = "AMI type for managed node group. Leave empty to auto-select (AL2 for <=1.32, AL2023 for >=1.33)."
+  type        = string
+  default     = ""
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string

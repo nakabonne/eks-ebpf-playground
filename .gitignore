@@ -62,3 +62,5 @@ kubeconfig_*
 # AWS credentials (should never be committed)
 .aws/
 credentials
+
+.envrc

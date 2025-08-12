@@ -47,3 +47,10 @@ status: ## Show cluster status
 	@echo ""
 	@echo "All resources:"
 	kubectl get all --all-namespaces
+
+build:
+	$(BPF_CLANG) $(BPF_CFLAGS) -c bpf/hello.bpf.c -o hello.bpf.o
+	go build -o cmd/main ./cmd
+
+build-image:
+	docker buildx build --platform=linux/amd64 --load -t ebpf-sample .

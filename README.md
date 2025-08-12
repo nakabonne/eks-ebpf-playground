@@ -8,6 +8,7 @@ This project creates a minimal EKS (Elastic Kubernetes Service) cluster on AWS u
 2. **Terraform** - [Install Terraform](https://www.terraform.io/downloads.html) (>= 1.0)
 3. **kubectl** - [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 4. **AWS IAM Permissions** - Ensure your AWS credentials have sufficient permissions to create EKS clusters, VPCs, and related resources
+5. **direnv** [Install direnv](https://direnv.net/)
 
 ## Architecture
 
@@ -49,7 +50,7 @@ This Terraform configuration creates:
 
 6. **Configure kubectl:**
    ```bash
-   aws eks --region us-west-2 update-kubeconfig --name eks-ebpf-playground
+   aws eks --region ap-northeast-1 update-kubeconfig --name eks-ebpf-playground
    ```
 
 7. **Verify the cluster:**
@@ -140,11 +141,3 @@ aws eks list-nodegroups --region us-west-2 --cluster-name eks-ebpf-playground
 # View cluster resources
 kubectl get all --all-namespaces
 ```
-
-## Contributing
-
-Feel free to submit issues and pull requests to improve this configuration.
-
-## License
-
-See LICENSE file for details.

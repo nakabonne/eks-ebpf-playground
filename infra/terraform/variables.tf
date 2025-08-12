@@ -49,7 +49,7 @@ variable "node_group_min_size" {
 variable "node_group_max_size" {
   description = "Maximum number of nodes in the EKS node group"
   type        = number
-  default     = 3
+  default     = 2
 }
 
 variable "node_group_desired_size" {

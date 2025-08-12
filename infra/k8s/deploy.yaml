@@ -10,7 +10,7 @@ spec:
   containers:
   - name: ebpf-sample
     image: ghcr.io/nakabonne/ebpf-sample:latest
-    imagePullPolicy: Never
+    imagePullPolicy: Always
     securityContext:
       privileged: true
     volumeMounts:

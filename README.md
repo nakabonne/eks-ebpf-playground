@@ -58,6 +58,24 @@ This Terraform configuration creates:
    kubectl get nodes
    ```
 
+8. **Build and push images**
+
+   ```bash
+   make build-push-image
+   ```
+
+9. **Apply Kubernetes resources**
+
+   ```bash
+   make apply-k8s
+   ```
+
+10. See the output from eBPF program
+
+   ```bash
+   kubectl exec -it ebpf-sample -- sh -c 'cat /sys/kernel/debug/tracing/trace_pipe'
+   ```
+
 ## Configuration
 
 ### Variables
@@ -141,3 +159,4 @@ aws eks list-nodegroups --region us-west-2 --cluster-name eks-ebpf-playground
 # View cluster resources
 kubectl get all --all-namespaces
 ```
+

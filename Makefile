@@ -16,3 +16,6 @@ apply-k8s:
 
 apply:
 	cd infra/terraform && terraform apply && cd - && make apply-k8s
+
+destroy:
+	cd infra/terraform && terraform destroy && cd -

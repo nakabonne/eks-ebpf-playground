@@ -76,6 +76,16 @@ This Terraform configuration creates:
    kubectl exec -it ebpf-sample -- sh -c 'cat /sys/kernel/debug/tracing/trace_pipe'
    ```
 
+## Daily commands
+
+```bash
+make apply
+```
+
+```bash
+make destroy
+```
+
 ## Configuration
 
 ### Variables

@@ -11,4 +11,8 @@ build-push-image:
 	docker push ghcr.io/${GH_USER}/ebpf-sample:latest
 
 apply-k8s:
+	aws eks update-kubeconfig --region ap-northeast-1 --name eks-ebpf-playground
 	kubectl apply -f infra/k8s/deploy.yaml
+
+apply:
+	cd infra/terraform && terraform apply && cd - && make apply-k8s
